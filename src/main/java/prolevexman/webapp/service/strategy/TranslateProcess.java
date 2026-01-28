@@ -1,18 +1,21 @@
 package prolevexman.webapp.service.strategy;
 
+import org.springframework.stereotype.Service;
 import prolevexman.webapp.dao.ProcessInstanceDao;
 import prolevexman.webapp.dao.ProcessTranslateExecutionDao;
 import prolevexman.webapp.model.entity.ProcessInstance;
 import prolevexman.webapp.model.entity.ProcessTranslateExecution;
 import prolevexman.webapp.model.enums.ProcessType;
+import prolevexman.webapp.service.external.MyMemoryApiClient;
 
+@Service
 public class TranslateProcess implements ProcessExecutionStrategy{
 
     private final ProcessInstanceDao processInstanceDao;
     private final ProcessTranslateExecutionDao processTranslateExecutionDao;
-    private final TranslateApiClient translateApiClient;
+    private final MyMemoryApiClient translateApiClient;
 
-    public TranslateProcess(ProcessInstanceDao processInstanceDao, ProcessTranslateExecutionDao processTranslateExecutionDao, TranslateApiClient translateApiClient) {
+    public TranslateProcess(ProcessInstanceDao processInstanceDao, ProcessTranslateExecutionDao processTranslateExecutionDao, MyMemoryApiClient translateApiClient) {
         this.processInstanceDao = processInstanceDao;
         this.processTranslateExecutionDao = processTranslateExecutionDao;
         this.translateApiClient = translateApiClient;

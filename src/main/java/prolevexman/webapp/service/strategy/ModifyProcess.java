@@ -1,11 +1,13 @@
 package prolevexman.webapp.service.strategy;
 
+import org.springframework.stereotype.Service;
 import prolevexman.webapp.dao.ProcessInstanceDao;
 import prolevexman.webapp.model.entity.ProcessInstance;
 import prolevexman.webapp.model.enums.ProcessType;
 
 import java.util.Set;
 
+@Service
 public class ModifyProcess implements ProcessExecutionStrategy{
 
     private final ProcessInstanceDao processInstanceDao;
