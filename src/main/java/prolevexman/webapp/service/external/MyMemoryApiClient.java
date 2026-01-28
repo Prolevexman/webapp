@@ -22,7 +22,7 @@ public class MyMemoryApiClient {
         this.url = url;
     }
 
-    @Async
+    @Async("translate")
     public CompletableFuture<String> translate(String input) {
         try {
             URI uri = UriComponentsBuilder
