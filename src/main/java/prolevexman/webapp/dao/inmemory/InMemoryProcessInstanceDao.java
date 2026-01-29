@@ -17,6 +17,9 @@ public class InMemoryProcessInstanceDao implements ProcessInstanceDao {
 
     @Override
     public void save(ProcessInstance processInstance) {
+        if (processInstance.getId() == null) {
+            processInstance.setId(UUID.randomUUID());
+        }
         storage.put(processInstance.getId(), processInstance);
     }
 

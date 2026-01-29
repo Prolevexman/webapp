@@ -16,6 +16,9 @@ public class InMemoryProcessTranslateExecutionDao implements ProcessTranslateExe
 
     @Override
     public void save(ProcessTranslateExecution processTranslateExecution) {
+        if (processTranslateExecution.getId() == null) {
+            processTranslateExecution.setId(UUID.randomUUID());
+        }
         storage.put(processTranslateExecution.getId(), processTranslateExecution);
     }
 

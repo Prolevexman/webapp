@@ -13,7 +13,6 @@ public class ProcessInstance {
     private String result;
 
     public ProcessInstance(String initiatorIp, String inputData) {
-        this.id = UUID.randomUUID();
         this.startTime = LocalDateTime.now();
         this.initiatorIp = initiatorIp;
         this.inputData = inputData;
@@ -21,6 +20,10 @@ public class ProcessInstance {
 
     public UUID getId() {
         return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public LocalDateTime getStartTime() {
