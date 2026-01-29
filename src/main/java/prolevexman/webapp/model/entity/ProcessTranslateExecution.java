@@ -1,7 +1,5 @@
 package prolevexman.webapp.model.entity;
 
-import prolevexman.webapp.model.enums.ProcessType;
-
 import java.util.UUID;
 
 public class ProcessTranslateExecution {

@@ -5,7 +5,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.util.UriComponentsBuilder;
-import prolevexman.webapp.model.dto.mymemory.MyMemoryResponse;
+import prolevexman.webapp.dto.mymemory.MyMemoryResponse;
 
 
 import java.net.URI;
@@ -29,7 +29,8 @@ public class MyMemoryApiClient {
                     .fromUriString(url)
                     .queryParam("q", input)
                     .queryParam("langpair", "en|ru")
-                    .build(true)
+                    .encode()
+                    .build()
                     .toUri();
 
             MyMemoryResponse response = restClient.get()

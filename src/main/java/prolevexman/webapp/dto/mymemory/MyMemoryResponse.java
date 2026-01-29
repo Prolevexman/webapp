@@ -1,4 +1,4 @@
-package prolevexman.webapp.model.dto.mymemory;
+package prolevexman.webapp.dto.mymemory;
 
 public class MyMemoryResponse {
 

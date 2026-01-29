@@ -1,11 +1,13 @@
 package prolevexman.webapp.service;
 
+import org.springframework.stereotype.Service;
 import prolevexman.webapp.dao.ProcessInstanceDao;
 import prolevexman.webapp.dao.ProcessTranslateExecutionDao;
 import prolevexman.webapp.model.entity.ProcessInstance;
 
 import java.util.UUID;
 
+@Service
 public class ProcessDeleteService {
     private ProcessInstanceDao processInstanceDao;
     private ProcessTranslateExecutionDao processTranslateExecutionDao;
