@@ -28,7 +28,7 @@ public class ModifyProcess implements ProcessExecutionStrategy{
         int leftPointer = 0;
         int rightPointer = result.length - 1;
 
-        while (leftPointer < rightPointer) {
+        while (leftPointer <= rightPointer) {
             char leftChar = input.charAt(leftPointer);
             char rightChar = input.charAt(rightPointer);
 
