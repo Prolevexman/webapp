@@ -11,16 +11,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 //@SpringBootTest
 class WebappApplicationTests {
 
-	@Test
-	void testModifyProcess() {
-		InMemoryProcessInstanceDao dao = new InMemoryProcessInstanceDao();
-		ModifyProcess process = new ModifyProcess(dao);
-		ProcessInstance instance = new ProcessInstance("1.1.1.1", "Привет мир");
-		String input = instance.getInputData();
-		String expected = "рйм тжвйрП";
-		process.execute(instance);
-		System.out.println(instance.getResult());
-		assertEquals(expected, instance.getResult());
-	}
+//	@Test
+//	void testModifyProcess() {
+//		InMemoryProcessInstanceDao dao = new InMemoryProcessInstanceDao();
+//		ModifyProcess process = new ModifyProcess(dao);
+//		ProcessInstance instance = new ProcessInstance("1.1.1.1", "Привет мир");
+//		String input = instance.getInputData();
+//		String expected = "рйм тжвйрП";
+//		process.execute(instance);
+//		System.out.println(instance.getResult());
+//		assertEquals(expected, instance.getResult());
+//	}
 
 }

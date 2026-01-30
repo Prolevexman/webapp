@@ -8,16 +8,14 @@ import prolevexman.webapp.model.entity.ProcessTranslateExecution;
 import prolevexman.webapp.model.enums.ProcessType;
 import prolevexman.webapp.service.external.MyMemoryApiClient;
 
+import java.util.concurrent.CompletableFuture;
+
 @Service
 public class TranslateProcess implements ProcessExecutionStrategy{
 
-    private final ProcessInstanceDao processInstanceDao;
-    private final ProcessTranslateExecutionDao processTranslateExecutionDao;
     private final MyMemoryApiClient translateApiClient;
 
-    public TranslateProcess(ProcessInstanceDao processInstanceDao, ProcessTranslateExecutionDao processTranslateExecutionDao, MyMemoryApiClient translateApiClient) {
-        this.processInstanceDao = processInstanceDao;
-        this.processTranslateExecutionDao = processTranslateExecutionDao;
+    public TranslateProcess(MyMemoryApiClient translateApiClient) {
         this.translateApiClient = translateApiClient;
     }
 
@@ -27,20 +25,8 @@ public class TranslateProcess implements ProcessExecutionStrategy{
     }
 
     @Override
-    public void execute(ProcessInstance processInstance) {
-        ProcessTranslateExecution processTranslateExecution = new ProcessTranslateExecution(processInstance.getId());
+    public CompletableFuture<String> execute(String input) {
 
-        processTranslateExecutionDao.save(processTranslateExecution);
-
-        translateApiClient.translate(processInstance.getInputData())
-                .thenAccept(result -> {
-                    processInstance.setResult(result);
-                    processInstanceDao.update(processInstance);
-                })
-                .exceptionally(ex -> {
-                    processInstance.setResult(ex.getMessage());
-                    processInstanceDao.update(processInstance);
-                    return null;
-                });
+        return translateApiClient.translate(input);
     }
 }

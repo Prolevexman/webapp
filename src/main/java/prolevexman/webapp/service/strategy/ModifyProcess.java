@@ -6,15 +6,10 @@ import prolevexman.webapp.model.entity.ProcessInstance;
 import prolevexman.webapp.model.enums.ProcessType;
 
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class ModifyProcess implements ProcessExecutionStrategy{
-
-    private final ProcessInstanceDao processInstanceDao;
-
-    public ModifyProcess(ProcessInstanceDao processInstanceDao) {
-        this.processInstanceDao = processInstanceDao;
-    }
 
     @Override
     public ProcessType getType() {
@@ -22,12 +17,10 @@ public class ModifyProcess implements ProcessExecutionStrategy{
     }
 
     @Override
-    public void execute(ProcessInstance processInstance) {
-        String input = processInstance.getInputData();
+    public CompletableFuture<String> execute(String input) {
         String result = modifyString(input);
 
-        processInstance.setResult(result);
-        processInstanceDao.update(processInstance);
+        return CompletableFuture.completedFuture(result);
     }
 
     private String modifyString(String input) {
