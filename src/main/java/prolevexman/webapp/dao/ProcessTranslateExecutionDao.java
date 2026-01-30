@@ -8,6 +8,6 @@ import java.util.UUID;
 public interface ProcessTranslateExecutionDao {
 
     void save(ProcessTranslateExecution processExecution);
-    void deleteByInstanceId(UUID instanceId);
+    void deleteByInstanceId(Long instanceId);
     List<ProcessTranslateExecution> findAll();
 }

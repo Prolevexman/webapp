@@ -17,13 +17,14 @@ public class ProcessDeleteService {
         this.processTranslateExecutionDao = processTranslateExecutionDao;
     }
 
-    public void deleteProcess(UUID id) {
+    public void deleteProcess(Long id) {
         ProcessInstance processInstance = processInstanceDao.findById(id);
 
         if(processInstance == null) {
             throw new IllegalArgumentException("Процесс не найден, id: " + id);
         }
-        processInstanceDao.deleteById(id);
         processTranslateExecutionDao.deleteByInstanceId(id);
+        processInstanceDao.deleteById(id);
+
     }
 }

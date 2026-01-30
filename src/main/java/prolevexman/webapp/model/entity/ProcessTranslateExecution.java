@@ -4,22 +4,22 @@ import java.util.UUID;
 
 public class ProcessTranslateExecution {
 
-    private UUID id;
-    private UUID instanceId;
+    private Long id;
+    private Long instanceId;
 
-    public ProcessTranslateExecution(UUID instanceId) {
+    public ProcessTranslateExecution(Long instanceId) {
         this.instanceId = instanceId;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public UUID getInstanceId() {
+    public Long getInstanceId() {
         return instanceId;
     }
 }

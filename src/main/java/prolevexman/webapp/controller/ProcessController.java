@@ -44,14 +44,14 @@ public class ProcessController {
             ip = httpServletRequest.getRemoteAddr();
         }
 
-        UUID id = processStartService.startProcess(ip, request.getInputData(), request.getType());
+        Long id = processStartService.startProcess(ip, request.getInputData(), request.getType());
         StartProcessResponse response = new StartProcessResponse();
         response.setId(id);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("/{id}/result")
-    public ResponseEntity<GetProcessResultResponse> getProcessResult(@PathVariable UUID id) {
+    public ResponseEntity<GetProcessResultResponse> getProcessResult(@PathVariable Long id) {
         ProcessInstance processInstance = processQueryService.getProcess(id);
         String result = processInstance.getResult();
         GetProcessResultResponse response = new GetProcessResultResponse();
@@ -67,7 +67,7 @@ public class ProcessController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProcess(@PathVariable UUID id) {
+    public ResponseEntity<Void> deleteProcess(@PathVariable Long id) {
         processDeleteService.deleteProcess(id);
         return ResponseEntity.noContent().build();
     }

@@ -5,7 +5,6 @@ import prolevexman.webapp.dao.ProcessInstanceDao;
 import prolevexman.webapp.model.entity.ProcessInstance;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class ProcessQueryService {
@@ -15,7 +14,7 @@ public class ProcessQueryService {
         this.processInstanceDao = processInstanceDao;
     }
 
-    public ProcessInstance getProcess(UUID id) {
+    public ProcessInstance getProcess(Long id) {
         ProcessInstance processInstance = processInstanceDao.findById(id);
 
         if(processInstance == null) {

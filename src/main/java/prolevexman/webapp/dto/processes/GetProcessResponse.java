@@ -4,17 +4,17 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class GetProcessResponse {
-    private UUID id;
+    private Long id;
     private LocalDateTime startTime;
     private String initiatorIp;
     private String inputData;
     private String result;
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

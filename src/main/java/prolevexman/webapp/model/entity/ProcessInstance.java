@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class ProcessInstance {
 
-    private UUID id;
+    private Long id;
     private LocalDateTime startTime;
     private String initiatorIp;
     private String inputData;
@@ -18,16 +18,20 @@ public class ProcessInstance {
         this.inputData = inputData;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     public LocalDateTime getStartTime() {
         return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
     }
 
     public String getInitiatorIp() {
