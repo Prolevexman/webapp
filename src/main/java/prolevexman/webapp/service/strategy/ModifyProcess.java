@@ -45,11 +45,13 @@ public class ModifyProcess implements ProcessExecutionStrategy{
             'a','e','i','o','u',
             'а','е','ё','и','о','у','ы','э','ю','я');
     private char replaceVowel(char c) {
+        boolean isUpper = Character.isUpperCase(c);
         char lower = Character.toLowerCase(c);
         if(!VOWELS.contains(lower)) {
             return c;
         }
-        return nextAlphabetChar(c);
+        char replaced = nextAlphabetChar(lower);
+        return isUpper ? Character.toUpperCase(replaced) : replaced;
     }
 
     private char nextAlphabetChar(char c) {
