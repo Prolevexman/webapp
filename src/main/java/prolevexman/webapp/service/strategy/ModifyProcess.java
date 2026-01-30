@@ -54,13 +54,16 @@ public class ModifyProcess implements ProcessExecutionStrategy{
         return isUpper ? Character.toUpperCase(replaced) : replaced;
     }
 
+    private static final String RU_ALPHABET = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+
     private char nextAlphabetChar(char c) {
         if(c >= 'a' && c <= 'z') {
             return c == 'z' ? 'a' : (char) (c + 1);
         }
 
-        if(c >= 'а' && c <= 'я') {
-            return c == 'я' ? 'а' : (char) (c + 1);
+        int index = RU_ALPHABET.indexOf(c);
+        if(index != -1) {
+            return RU_ALPHABET.charAt((index + 1) % RU_ALPHABET.length());
         }
         return c;
     }

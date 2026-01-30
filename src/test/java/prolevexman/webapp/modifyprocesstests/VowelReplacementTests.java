@@ -32,4 +32,23 @@ public class VowelReplacementTests {
         String actual = modifyProcess.execute(input).join();
         assertThat(actual).isEqualTo(expected);
     }
+
+    @ParameterizedTest(name = "'{0}' -> '{1}'")
+    @CsvSource({
+            "а, б",
+            "е, ё",
+            "ё, ж",
+            "и, й",
+            "о, п",
+            "у, ф",
+            "ы, ь",
+            "э, ю",
+            "ю, я",
+            "я, а"
+    })
+    @DisplayName("замена русских гласных на следующую букву")
+    void shouldReplaceRussianVowels(String input, String expected) {
+        String actual = modifyProcess.execute(input).join();
+        assertThat(actual).isEqualTo(expected);
+    }
 }
